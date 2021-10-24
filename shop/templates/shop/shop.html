@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+  shop
+{% endblock title %}
+
+{% block content %}
+
+<section class="mt-5 jumbotron text-center">
+    <div class="container mt-5">
+      <h1 style="font-family: 'SF-Pro Bold', sans-serif;">Album example</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Create Product</a>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5">
+    <div class="container">
+
+      <div class="row">
+        {% for product in object_list  %}
+          
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+          <img src="{{product.image.url}}" width="288px" height="288px"/>            
+            <div class="card-body">
+              <p class="card-text mt-2" style="color: black; font-family: 'SF-Pro Bold', sans-serif; font-size: 25px;">{{product.name}}</p>
+              <p class="card-text" style="color: black;">{{product.description}}</p>
+              <p class="card-text mt-2" style="color: black; font-family: 'SF-Pro Bold', sans-serif;">{{product.price}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="#"><button type="button" class="btn btn-sm btn-outline-dark">Details</button></a>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-success" style="font-family: 'SF-Pro Rounded', sans-serif;">{{product.created_at}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      </div>
+      <br>
+      <div class="pagination d-flex justify-content-center">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+            </span>
+    </div>
+  </div>
+  
+{% endblock content %}

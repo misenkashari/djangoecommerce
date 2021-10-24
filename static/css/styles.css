@@ -1,0 +1,17 @@
+body{
+    font-family: 'Sf-Pro Regular', sans-serif;
+}
+
+.jumbotron{
+    background-color: white;
+}
+
+.makeout{
+    background-color: transparent;
+    color: white;
+    font-size: 25px;
+  }
+  .makeout:hover{
+    color: white;
+    text-decoration: none;
+  }
