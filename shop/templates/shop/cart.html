@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  cart
+{% endblock title %}
+
+{% block content %}
+<br><br><br><br>
+<div class="container">
+  <br><br>
+  <h1 class="text-center" style="color: black; font-family: 'SF-Pro Bold', sans-serif;">Take a last look at your cart before proceeding to payment.</h1>
+  <br><br>
+  <div class="card shadow">
+    <div class="card-header text-center" style="color: black; font-family: 'SF-Pro Bold', sans-serif; font-size: 22px; font-weight: bold;">
+      <div class="cart-header" style="color: black;">
+        <div style="flex:1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+          <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+          <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+        </svg></div>
+        <div style="flex:2;"><p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+          <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
+        </svg></p></div>
+        <div style="flex:1"><p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
+          <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+          <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
+        </svg></p></div>
+        <div style="flex:1"><p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+        </svg></p></div>
+        <div style="flex:1">+/-</div>
+      </div>   
+     </div>
+    <div class="card-body text-center text-muted">
+      {% for item in items %}
+      <hr>
+        <div class="cart-row" style="color: black;">
+					<div style="flex:1"><img class="row-image" src="{{item.product.imageURL}}"></div>
+          <div style="flex:2; font-family: 'SF-Pro Text', sans-serif;" class="mt-4 font-weight-bold"><p>{{item.product.name}}</p></div>
+          <div style="flex:1" class="mt-4"><p>{{item.product.price}}</p></div>
+          <div style="flex:1" class="mt-2">
+            <div class="quantity">
+							<img data-product="{{item.product.id}}" data-action="add" class="chg-quantity text-success" src="{% static  'img/arrow-up.png' %}">
+					
+							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity text-danger" src="{% static  'img/arrow-down.png' %}"> 
+              <p>{{item.quantity}}</p>
+            </div>
+          </div>
+          <div style="flex:1" class="mt-4"><p>{{item.get_total}}</p></div>
+        </div>
+        <hr>
+      {% endfor %}
+      <div class="row">
+        <div class="col-lg-3 text-center" style="font-family: 'SF-Pro Bold'; color: black; font-size: 20px;">Total:</div>
+        <div class="col-lg-3 text-center" style="font-family: 'SF-Pro Text'; color: black; font-size: 20px;"></div>
+        <div class="col-lg-2 text-center" style="font-family: 'SF-Pro Text'; color: black; font-size: 20px;"></div>
+        <div class="col-lg-2 text-center" style="font-family: 'SF-Pro Text'; color: black; font-size: 20px;">{{order.get_cart_items}} Items</div>
+        <div class="col-lg-2 text-center" style="font-family: 'SF-Pro Text'; color: black; font-size: 20px;">{{order.get_cart_total}}</div>
+      </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-lg-6 text-right"><button class="btn btn-secondary col-4">Continue Shopping</button></div>
+  <div class="col-lg-6 text-left"><button class="btn btn-primary col-4">Proceed to Payment</button></div>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  checkout
+{% endblock title %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+  <br><br>
+  <h1 class="text-center" style="color: black; font-family: 'SF-Pro Bold', sans-serif;">Let's finish this transaction, shall we?</h1>
+  <div class="card mt-5">
+  <div class="card-body text-center">
+    <h4>Dear Mr. {{order.customer}} you have chosen a total of <span style="color: black; font-family: 'SF-Pro Bold', sans-serif;">{{order.get_cart_items}} items</span> that reach an estimated value of <span style="color: black; font-family: 'SF-Pro Bold', sans-serif;">{{order.get_cart_total}}</span>.</h4>
+  </div>
+</div>
+</div>
+{% endblock content %}

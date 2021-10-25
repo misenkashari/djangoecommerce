@@ -1,5 +1,5 @@
 body{
-    font-family: 'Sf-Pro Regular', sans-serif;
+    font-family: 'Sf-Pro Display', sans-serif;
 }
 
 .jumbotron{
@@ -9,9 +9,45 @@ body{
 .makeout{
     background-color: transparent;
     color: white;
-    font-size: 25px;
+    font-size: 40px;
   }
   .makeout:hover{
     color: white;
     text-decoration: none;
+  }
+
+  .cart-row{
+    display: flex;
+      align-items: flex-stretch;
+      padding-bottom: 10px;
+      margin-bottom: 10px;  
+  }
+  .row-image{
+    width: 100px;
+  }
+
+  .cart-header{
+    display: flex;
+      align-items: flex-stretch;
+      margin-top: 10px;
+  }
+  .chg-quantity{
+    width: 12px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 5px;
+    transition:.1s;
+  }
+  
+  .chg-quantity:hover{
+    opacity: .6;
+  }
+
+  .quantity{
+    display: inline;
+    padding-right: 10px;
+  }
+  .total-row{
+    display: flex;
+      align-items: flex-stretch;
   }
